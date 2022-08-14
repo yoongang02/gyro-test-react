@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/gyro-test-react/static/css/main.e2af1774.css",
+    "main.css": "/gyro-test-react/static/css/main.8913c417.css",
     "main.js": "/gyro-test-react/static/js/main.03e14d48.js",
     "static/js/787.7f2c2da0.chunk.js": "/gyro-test-react/static/js/787.7f2c2da0.chunk.js",
     "index.html": "/gyro-test-react/index.html",
-    "main.e2af1774.css.map": "/gyro-test-react/static/css/main.e2af1774.css.map",
+    "main.8913c417.css.map": "/gyro-test-react/static/css/main.8913c417.css.map",
     "main.03e14d48.js.map": "/gyro-test-react/static/js/main.03e14d48.js.map",
     "787.7f2c2da0.chunk.js.map": "/gyro-test-react/static/js/787.7f2c2da0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2af1774.css",
+    "static/css/main.8913c417.css",
     "static/js/main.03e14d48.js"
   ]
 }

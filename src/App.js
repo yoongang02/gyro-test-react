@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import charImg from './img/char.png'
 import stopImg from './img/btn-stop.png'
 import clockImg from './img/clock.png'
+import './main.css'
 
 function App() {
   const [gamma, setGamma] = useState(0);
@@ -13,7 +14,13 @@ function App() {
   const charSize = clientWidth / charRatio;
   const maxPx = clientWidth / 2 - charSize / 2;
   const minPx = -clientWidth / 2 + charSize / 2;
-  const rateConstant = 1.5 * clientWidth / 180;
+  const rateConstant = 1.8 * clientWidth / 180;
+
+
+  const [score, setScore] = useState(0);
+  const [round, setRound] = useState(0);
+
+  const [time, setTime] = useState(70);
 
   if (window.DeviceOrientationEvent) {
     //이벤트 리스너 등록
@@ -29,6 +36,18 @@ function App() {
 
   return (
     <div className="App">
+      <div className='top-bar'>
+        <img id='clock-img' src={clockImg} />
+        <div id='time-bar'>
+          <div id='remain-time' style={{ width: `${time}vw` }}></div>
+          <div id='total-time'></div>
+        </div>
+        <img id='stop-btn' src={stopImg} />
+      </div>
+      <div className='score-round'>
+        <div>Score : {score} </div>
+        <div>Round : {round} </div>
+      </div>
       <div className='삭제예정'>
         <div>clientWidth: {clientWidth}</div>
         <div>gamma: {Math.round(gamma)}</div>

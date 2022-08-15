@@ -1,0 +1,49 @@
+#root {
+    --time-color: #A2C8CD;
+    --time-bg-dark: #E6D3C8;
+    --time-bg-light: #F5ECE6;
+}
+
+.삭제예정 {
+    margin-top: 20vw;
+}
+
+.top-bar {
+    display: flex;
+    margin: 0px 6vw;
+    margin-top: 7vh;
+    justify-content: space-between;
+}
+
+#total-time {
+    background-color: var(--time-bg-light);
+    width: 72vw;
+    height: 22px;
+    position: absolute;
+    z-index: -2;
+    border-radius: 10px;
+}
+
+#remain-time {
+    background-color: var(--time-color);
+    width: 70vw;
+    height: 14px;
+    position: relative;
+    z-index: -1;
+    border-radius: 2px;
+    top: 18px
+}
+
+#clock-img {
+    position: absolute;
+}
+
+#stop-btn {
+    position: relative;
+}
+
+.score-round {
+    display: flex;
+    margin: 0px 25vw;
+    justify-content: space-between;
+}

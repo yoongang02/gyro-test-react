@@ -47,3 +47,9 @@
     margin: 0px 25vw;
     justify-content: space-between;
 }
+
+#char-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

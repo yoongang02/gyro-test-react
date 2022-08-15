@@ -15,6 +15,18 @@ function App() {
   const minPx = -clientWidth / 2 + charSize / 2;
   const rateConstant = 1.5 * clientWidth / 180;
 
+  if (window.DeviceOrientationEvent) {
+    //이벤트 리스너 등록
+    window.addEventListener('deviceorientation', function (event) {
+      let gamma = event.gamma; //(-90, 90)
+      setGamma(gamma);
+      let pos = rateConstant * gamma;
+      if (pos > maxPx) setPosition(maxPx);
+      else if (pos < minPx) setPosition(minPx);
+      else setPosition(pos);
+    }, false);
+  }
+
   return (
     <div className="App">
       <div className='삭제예정'>

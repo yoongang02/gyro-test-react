@@ -27,7 +27,7 @@ function App() {
     window.addEventListener('deviceorientation', function (event) {
       let gamma = event.alpha; //(-90, 90)
       setGamma(gamma);
-      let pos = rateConstant * gamma - 90;
+      let pos = rateConstant * (gamma - 90);
       if (pos > maxPx) setPosition(maxPx);
       else if (pos < minPx) setPosition(minPx);
       else setPosition(pos);
@@ -50,7 +50,7 @@ function App() {
       </div>
       <div className='삭제예정'>
         <div>clientWidth: {clientWidth}</div>
-        <div>gamma: {Math.round(gamma)}</div>
+        <div>alpha: {Math.round(gamma)}</div>
         <div>px: {Math.round(position)}</div>
         <div>maxPx: {maxPx}</div>
         <div>minPx: {minPx}</div>

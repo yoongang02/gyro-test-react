@@ -27,7 +27,7 @@ function App() {
     window.addEventListener('deviceorientation', function (event) {
       let gamma = event.alpha; //(-90, 90)
       setGamma(gamma);
-      let pos = rateConstant * gamma;
+      let pos = rateConstant * gamma - 90;
       if (pos > maxPx) setPosition(maxPx);
       else if (pos < minPx) setPosition(minPx);
       else setPosition(pos);
@@ -59,7 +59,7 @@ function App() {
         <img
           id='char-img'
           style={{
-            width: `${charSize}px`, position: 'relative', right: `${gamma}px`
+            width: `${charSize}px`, position: 'relative', right: `${position}px`
           }}
           src={charImg} />
       </div>

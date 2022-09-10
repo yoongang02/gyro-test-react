@@ -14,7 +14,7 @@ function App() {
   const charSize = clientWidth / charRatio;
   const maxPx = clientWidth / 2 - charSize / 2;
   const minPx = -clientWidth / 2 + charSize / 2;
-  const rateConstant = 1.8 * clientWidth / 180;
+  const rateConstant = 3 * clientWidth / 180;
 
 
   const [score, setScore] = useState(0);

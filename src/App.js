@@ -59,7 +59,7 @@ function App() {
         <img
           id='char-img'
           style={{
-            width: `${charSize}px`, position: 'relative', left: `${gamma}px`
+            width: `${charSize}px`, position: 'relative', right: `${gamma}px`
           }}
           src={charImg} />
       </div>

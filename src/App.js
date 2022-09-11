@@ -106,7 +106,7 @@ export default function App() {
             <img src={charHead} id='charHead' className='mg-charset' />
             <img src={charBody} id='charBody' className='mg-charset' />
 
-            <img src={mgGoBtn} id='mgGoBtn' onClick={onClickReady} />
+            <img src={mgGoBtn} id='mgGoBtn' onClick={isIPhone ? getDeviceOrientation : onClickReady} />
           </div>
         }
         <div className='mg-bg'

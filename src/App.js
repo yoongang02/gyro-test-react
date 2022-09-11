@@ -97,7 +97,7 @@ export default function App() {
       if (pos > maxPx) setAlphaPosition(maxPx);
       else if (pos < minPx) setAlphaPosition(minPx);
       else setAlphaPosition(pos);
-      gammaPos = Math.max(0, Math.min(98, gammaPos));
+      gammaPos = Math.max(minPx, Math.min(maxPx, gammaPos));
       setGammaPosition(gammaPos);
     })
     setIsReady(true);

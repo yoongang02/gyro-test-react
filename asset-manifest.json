@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/webgame-test/static/css/main.4785a472.css",
-    "main.js": "/webgame-test/static/js/main.811c1a48.js",
+    "main.js": "/webgame-test/static/js/main.5d3e1e55.js",
     "static/js/787.dc648eee.chunk.js": "/webgame-test/static/js/787.dc648eee.chunk.js",
     "static/media/move-bg-winter.png": "/webgame-test/static/media/move-bg-winter.8d4adb4898e38c7127f3.png",
     "static/media/move-bg-summer.png": "/webgame-test/static/media/move-bg-summer.0bb6a91a89ff898a6592.png",
@@ -12,11 +12,11 @@
     "static/media/char-stop.png": "/webgame-test/static/media/char-stop.c9aced498bb7798df9cc.png",
     "index.html": "/webgame-test/index.html",
     "main.4785a472.css.map": "/webgame-test/static/css/main.4785a472.css.map",
-    "main.811c1a48.js.map": "/webgame-test/static/js/main.811c1a48.js.map",
+    "main.5d3e1e55.js.map": "/webgame-test/static/js/main.5d3e1e55.js.map",
     "787.dc648eee.chunk.js.map": "/webgame-test/static/js/787.dc648eee.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4785a472.css",
-    "static/js/main.811c1a48.js"
+    "static/js/main.5d3e1e55.js"
   ]
 }

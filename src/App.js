@@ -84,7 +84,7 @@ export default function App() {
   const onClickReady = () => {
     //addEventListener
     window.addEventListener('deviceorientation', (event) => {
-      let alpha = event.alpha;
+      let alpha = event.gamma;
       setAlpha(alpha);
       let pos = (alpha - 90) * rateConstant;
       if (pos > maxPx) setCharPosition(maxPx);

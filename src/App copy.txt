@@ -1,0 +1,70 @@
+import './App.css';
+import React, { useState, useEffect, useRef } from 'react'
+import charImg from './img/char.png'
+import stopImg from './img/btn-stop.png'
+import clockImg from './img/clock.png'
+import './main.css'
+
+function App() {
+  const [gamma, setGamma] = useState(0);
+  const [position, setPosition] = useState(0);
+  const [charRatio, setCharRatio] = useState(10);
+
+  const clientWidth = window.innerWidth;
+  const charSize = clientWidth / charRatio;
+  const maxPx = clientWidth / 2 - charSize / 2;
+  const minPx = -clientWidth / 2 + charSize / 2;
+  const rateConstant = 6 * clientWidth / 180;
+
+
+  const [score, setScore] = useState(0);
+  const [round, setRound] = useState(0);
+
+  const [time, setTime] = useState(70);
+
+  if (window.DeviceOrientationEvent) {
+    //이벤트 리스너 등록
+    window.addEventListener('deviceorientation', function (event) {
+      let gamma = event.alpha; //(-90, 90)
+      setGamma(gamma);
+      let pos = rateConstant * (gamma - 90);
+      if (pos > maxPx) setPosition(maxPx);
+      else if (pos < minPx) setPosition(minPx);
+      else setPosition(pos);
+    }, false);
+  }
+
+  return (
+    <div className="App">
+      <div className='top-bar'>
+        <img id='clock-img' src={clockImg} />
+        <div id='time-bar'>
+          <div id='remain-time' style={{ width: `${time}vw` }}></div>
+          <div id='total-time'></div>
+        </div>
+        <img id='stop-btn' src={stopImg} />
+      </div>
+      <div className='score-round'>
+        <div>Score : {score} </div>
+        <div>Round : {round} </div>
+      </div>
+      <div className='삭제예정'>
+        <div>clientWidth: {clientWidth}</div>
+        <div>alpha: {Math.round(gamma)}</div>
+        <div>px: {Math.round(position)}</div>
+        <div>maxPx: {maxPx}</div>
+        <div>minPx: {minPx}</div>
+      </div>
+      <div id='char-container'>
+        <img
+          id='char-img'
+          style={{
+            width: `${charSize}px`, position: 'relative', right: `${position}px`
+          }}
+          src={charImg} />
+      </div>
+    </div>
+  );
+}
+
+export default App;

@@ -1,70 +1,135 @@
-import './App.css';
-import React, { useState, useEffect, useRef } from 'react'
-import charImg from './img/char.png'
-import stopImg from './img/btn-stop.png'
-import clockImg from './img/clock.png'
-import './main.css'
+import React, { useState, useEffect } from 'react'
+import './MgGame.css'
 
-function App() {
-  const [gamma, setGamma] = useState(0);
-  const [position, setPosition] = useState(0);
-  const [charRatio, setCharRatio] = useState(10);
+import mgBgFall from './img/move-bg-fall.png';
+import mgBgSpring from './img/move-bg-spring.png';
+import mgBgSummer from './img/move-bg-summer.png';
+import mgBgWinter from './img/move-bg-winter.png';
+
+import charStop from './img/char-stop.png'
+import charLeft from './img/char-left.png'
+import charRight from './img/char-right.png'
+
+import charBody from './img/move-char-body.png';
+import charHead from './img/move-char-head.png';
+import mgGoBtn from './img/move-go.png';
+
+
+export default function App() {
+
+  const mgTimeLimit = 10;
+  const [timePerRound, setTimePerRound] = useState(mgTimeLimit);
+  const [mgRound, setMgRound] = useState(1);
+  const [mgTimeStop, setMgTimeStop] = useState(true);
+
+  const [isReady, setIsReady] = useState(false);
+
+  const mgBgArray = [mgBgSpring, mgBgSummer, mgBgFall, mgBgWinter];
+  const [bgSelector, setBgSelector] = useState(0);
+
+  const user = navigator.userAgent;
+  const [isIPhone, setIsIPhone] = useState(false);
+  useEffect(() => {
+    if (user.indexOf("iPhone") > -1) {
+      setIsIPhone(true);
+    }
+    else if (user.indexOf("Android") > -1) {
+      setIsIPhone(false);
+    }
+  }, [])
 
   const clientWidth = window.innerWidth;
-  const charSize = clientWidth / charRatio;
+  const charRatio = 10;
+  const charSize = clientWidth / charRatio; //캐릭터 크기는 바꾸지 말자.
   const maxPx = clientWidth / 2 - charSize / 2;
   const minPx = -clientWidth / 2 + charSize / 2;
-  const rateConstant = 6 * clientWidth / 180;
+  const [charPosition, setCharPosition] = useState(0);
+  const [charRate, setCharRate] = useState(6);
+  const rateConstant = charRate * clientWidth / 180;
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (!mgTimeStop) {
+        if (timePerRound > 0) setTimePerRound(timePerRound - 1);
+        else if (timePerRound === 0) {
+          clearInterval(timer);
+          setTimePerRound(mgTimeLimit);
+          setMgRound(mgRound + 1);
+        };
+      }
+    }, 1000);
 
-  const [score, setScore] = useState(0);
-  const [round, setRound] = useState(0);
+    return () => clearInterval(timer);
+  }, [timePerRound, mgTimeStop]);
 
-  const [time, setTime] = useState(70);
+  useEffect(() => {
+    const bgIndex = parseInt(mgRound / 5) % 4;
+    setBgSelector(bgIndex);
+    console.log(bgSelector);
+  }, [mgRound]);
 
-  if (window.DeviceOrientationEvent) {
-    //이벤트 리스너 등록
-    window.addEventListener('deviceorientation', function (event) {
-      let gamma = event.alpha; //(-90, 90)
-      setGamma(gamma);
-      let pos = rateConstant * (gamma - 90);
-      if (pos > maxPx) setPosition(maxPx);
-      else if (pos < minPx) setPosition(minPx);
-      else setPosition(pos);
-    }, false);
+  const onClickTimeStop = () => {
+    mgTimeStop ? setMgTimeStop(false) : setMgTimeStop(true);
+  }
+
+  const getDeviceOrientation = () => {
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+      DeviceMotionEvent.requestPermission().then(response => {
+        if (response == 'granted') {
+          onClickReady();
+        }
+      }).catch(console.error);
+    }
+  }
+
+  const onClickReady = () => {
+    //addEventListener
+    window.addEventListener('deviceorientation', (event) => {
+      let pos = (event.alpha - 90) * rateConstant;
+      if (pos > maxPx) setCharPosition(maxPx);
+      else if (pos < minPx) setCharPosition(minPx);
+      else setCharPosition(pos);
+    })
+    setIsReady(true);
+    onClickTimeStop();
   }
 
   return (
-    <div className="App">
-      <div className='top-bar'>
-        <img id='clock-img' src={clockImg} />
-        <div id='time-bar'>
-          <div id='remain-time' style={{ width: `${time}vw` }}></div>
-          <div id='total-time'></div>
+    <div className='mg-outer-container'>
+      {isReady ? <div></div> :
+        <div className='mg-permission'>
+          <span id='mgAreYouReady'>준비되었나요?</span>
+          <img src={charHead} id='charHead' className='mg-charset' />
+          <img src={charBody} id='charBody' className='mg-charset' />
+
+          <img src={mgGoBtn} id='mgGoBtn' onClick={isIPhone ? getDeviceOrientation : onClickReady} />
         </div>
-        <img id='stop-btn' src={stopImg} />
-      </div>
-      <div className='score-round'>
-        <div>Score : {score} </div>
-        <div>Round : {round} </div>
-      </div>
-      <div className='삭제예정'>
-        <div>clientWidth: {clientWidth}</div>
-        <div>alpha: {Math.round(gamma)}</div>
-        <div>px: {Math.round(position)}</div>
-        <div>maxPx: {maxPx}</div>
-        <div>minPx: {minPx}</div>
-      </div>
-      <div id='char-container'>
-        <img
-          id='char-img'
-          style={{
-            width: `${charSize}px`, position: 'relative', right: `${position}px`
-          }}
-          src={charImg} />
+      }
+      <div className='mg-bg'
+        style={{
+          backgroundImage: `url(${mgBgArray[bgSelector]})`,
+          height: '100vh',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+          backgroundRepeat: 'no-repeat',
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}>
+        <div>time: {timePerRound}</div>
+        <div>round: {mgRound}</div>
+        <button onClick={onClickTimeStop}>timestop</button>
+        <div>
+          <img src={charStop}
+            style={{
+              width: `${charSize}px`,
+              position: 'relative',
+              bottom: '0',
+            }}
+            id='charStop' className='mg-char' />
+        </div>
       </div>
     </div>
-  );
+  )
 }
-
-export default App;

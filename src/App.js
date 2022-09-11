@@ -71,6 +71,7 @@ export default function App() {
   const onClickTimeStop = () => {
     mgTimeStop ? setMgTimeStop(false) : setMgTimeStop(true);
   }
+  //onClick={isIPhone ? getDeviceOrientation : onClickReady}
 
   const getDeviceOrientation = () => {
     if (typeof DeviceMotionEvent.requestPermission === 'function') {
@@ -102,7 +103,7 @@ export default function App() {
           <img src={charHead} id='charHead' className='mg-charset' />
           <img src={charBody} id='charBody' className='mg-charset' />
 
-          <img src={mgGoBtn} id='mgGoBtn' onClick={isIPhone ? getDeviceOrientation : onClickReady} />
+          <img src={mgGoBtn} id='mgGoBtn' />
         </div>
       }
       <div className='mg-bg'

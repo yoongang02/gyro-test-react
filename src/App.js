@@ -41,10 +41,12 @@ export default function App() {
   const charSize = clientWidth / charRatio; //캐릭터 크기는 바꾸지 말자.
   const maxPx = clientWidth / 2 - charSize / 2;
   const minPx = -clientWidth / 2 + charSize / 2;
-  const [charPosition, setCharPosition] = useState(0);
+  const [alphaPosition, setAlphaPosition] = useState(0);
   const [charRate, setCharRate] = useState(6);
   const rateConstant = charRate * clientWidth / 180;
   const [alpha, setAlpha] = useState(0);
+  const [gamma, setGamma] = useState(0);
+  const [gammaPosition, setGammaPosition] = useState(0);
   useEffect(() => {
     const timer = setInterval(() => {
       if (!mgTimeStop) {
@@ -84,12 +86,19 @@ export default function App() {
   const onClickReady = () => {
     //addEventListener
     window.addEventListener('deviceorientation', (event) => {
-      let alpha = event.gamma;
+      let alpha = event.alpha;
+      let gamma = event.gamma;
       setAlpha(alpha);
+      setGamma(gamma);
+
       let pos = (alpha - 90) * rateConstant;
-      if (pos > maxPx) setCharPosition(maxPx);
-      else if (pos < minPx) setCharPosition(minPx);
-      else setCharPosition(pos);
+      let gammaPos = gamma * rateConstant;
+
+      if (pos > maxPx) setAlphaPosition(maxPx);
+      else if (pos < minPx) setAlphaPosition(minPx);
+      else setAlphaPosition(pos);
+      gammaPos = Math.max(0, Math.min(98, gammaPos));
+      setGammaPosition(gammaPos);
     })
     setIsReady(true);
     onClickTimeStop();
@@ -124,15 +133,29 @@ export default function App() {
           <div>time: {timePerRound}</div>
           <div>round: {mgRound}</div>
           <div>alpha: {alpha}</div>
-          <div>position: {charPosition} </div>
+          <div>gamma: {gamma}</div>
+          <div>alphaPosition: {alphaPosition} </div>
+          <div>gammaPosition: {gammaPosition}</div>
           <button onClick={onClickTimeStop}>timestop</button>
           <div>
+            <div>*gammaPosition*</div>
             <img src={charStop}
               style={{
                 width: `${charSize}px`,
                 position: 'relative',
                 bottom: '0',
-                right: `${charPosition}px`
+                left: `${gammaPosition}px`
+              }}
+              id='charStop' className='mg-char' />
+          </div>
+          <div>
+            <div>*alphaPosition*</div>
+            <img src={charStop}
+              style={{
+                width: `${charSize}px`,
+                position: 'relative',
+                bottom: '0',
+                right: `${alphaPosition}px`
               }}
               id='charStop' className='mg-char' />
           </div>

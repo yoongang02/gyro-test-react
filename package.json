@@ -2,7 +2,7 @@
   "name": "webgame-test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kkys00.github.io/webgame-test",
+  "homepage": "https://kkys00.github.io/gyro-test-react",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",

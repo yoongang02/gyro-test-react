@@ -1,15 +1,22 @@
 {
   "files": {
-    "main.css": "/gyro-test-react/static/css/main.89948a1d.css",
-    "main.js": "/gyro-test-react/static/js/main.6922a22d.js",
-    "static/js/787.7f2c2da0.chunk.js": "/gyro-test-react/static/js/787.7f2c2da0.chunk.js",
-    "index.html": "/gyro-test-react/index.html",
-    "main.89948a1d.css.map": "/gyro-test-react/static/css/main.89948a1d.css.map",
-    "main.6922a22d.js.map": "/gyro-test-react/static/js/main.6922a22d.js.map",
-    "787.7f2c2da0.chunk.js.map": "/gyro-test-react/static/js/787.7f2c2da0.chunk.js.map"
+    "main.css": "/webgame-test/static/css/main.4785a472.css",
+    "main.js": "/webgame-test/static/js/main.811c1a48.js",
+    "static/js/787.dc648eee.chunk.js": "/webgame-test/static/js/787.dc648eee.chunk.js",
+    "static/media/move-bg-winter.png": "/webgame-test/static/media/move-bg-winter.8d4adb4898e38c7127f3.png",
+    "static/media/move-bg-summer.png": "/webgame-test/static/media/move-bg-summer.0bb6a91a89ff898a6592.png",
+    "static/media/move-bg-spring.png": "/webgame-test/static/media/move-bg-spring.1c1e3cde04537c490bae.png",
+    "static/media/move-bg-fall.png": "/webgame-test/static/media/move-bg-fall.bd738363ba3e3b667f7e.png",
+    "static/media/char-left.png": "/webgame-test/static/media/char-left.4ff4dd293706ae10f183.png",
+    "static/media/char-right.png": "/webgame-test/static/media/char-right.807cb4f2a1f0a9dc2d46.png",
+    "static/media/char-stop.png": "/webgame-test/static/media/char-stop.c9aced498bb7798df9cc.png",
+    "index.html": "/webgame-test/index.html",
+    "main.4785a472.css.map": "/webgame-test/static/css/main.4785a472.css.map",
+    "main.811c1a48.js.map": "/webgame-test/static/js/main.811c1a48.js.map",
+    "787.dc648eee.chunk.js.map": "/webgame-test/static/js/787.dc648eee.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.89948a1d.css",
-    "static/js/main.6922a22d.js"
+    "static/css/main.4785a472.css",
+    "static/js/main.811c1a48.js"
   ]
 }

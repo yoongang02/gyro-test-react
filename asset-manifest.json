@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gyro-test-react/static/css/main.4785a472.css",
-    "main.js": "/gyro-test-react/static/js/main.6ed1be5e.js",
+    "main.js": "/gyro-test-react/static/js/main.a67e0ca7.js",
     "static/js/787.7748170c.chunk.js": "/gyro-test-react/static/js/787.7748170c.chunk.js",
     "static/media/move-bg-winter.png": "/gyro-test-react/static/media/move-bg-winter.8d4adb4898e38c7127f3.png",
     "static/media/move-bg-summer.png": "/gyro-test-react/static/media/move-bg-summer.0bb6a91a89ff898a6592.png",
@@ -10,11 +10,11 @@
     "static/media/char-stop.png": "/gyro-test-react/static/media/char-stop.c9aced498bb7798df9cc.png",
     "index.html": "/gyro-test-react/index.html",
     "main.4785a472.css.map": "/gyro-test-react/static/css/main.4785a472.css.map",
-    "main.6ed1be5e.js.map": "/gyro-test-react/static/js/main.6ed1be5e.js.map",
+    "main.a67e0ca7.js.map": "/gyro-test-react/static/js/main.a67e0ca7.js.map",
     "787.7748170c.chunk.js.map": "/gyro-test-react/static/js/787.7748170c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4785a472.css",
-    "static/js/main.6ed1be5e.js"
+    "static/js/main.a67e0ca7.js"
   ]
 }

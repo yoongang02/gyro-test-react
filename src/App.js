@@ -7,11 +7,9 @@ import mgBgSummer from './img/move-bg-summer.png';
 import mgBgWinter from './img/move-bg-winter.png';
 
 import charStop from './img/char-stop.png'
-import charLeft from './img/char-left.png'
-import charRight from './img/char-right.png'
 
-import charBody from './img/move-char-body.png';
-import charHead from './img/move-char-head.png';
+import charBody from './img//move-char-body.png';
+import charHead from './img//move-char-head.png';
 import mgGoBtn from './img/move-go.png';
 
 
@@ -96,39 +94,43 @@ export default function App() {
   }
 
   return (
-    <div className='mg-outer-container'>
-      {isReady ? <div></div> :
-        <div className='mg-permission'>
-          <span id='mgAreYouReady'>준비되었나요?</span>
-          <img src={charHead} id='charHead' className='mg-charset' />
-          <img src={charBody} id='charBody' className='mg-charset' />
+    <div className='App'>
 
-          <img src={mgGoBtn} id='mgGoBtn' />
-        </div>
-      }
-      <div className='mg-bg'
-        style={{
-          backgroundImage: `url(${mgBgArray[bgSelector]})`,
-          height: '100vh',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-          backgroundRepeat: 'no-repeat',
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-        }}>
-        <div>time: {timePerRound}</div>
-        <div>round: {mgRound}</div>
-        <button onClick={onClickTimeStop}>timestop</button>
-        <div>
-          <img src={charStop}
-            style={{
-              width: `${charSize}px`,
-              position: 'relative',
-              bottom: '0',
-            }}
-            id='charStop' className='mg-char' />
+
+      <div className='mg-outer-container'>
+        {isReady ? <div></div> :
+          <div className='mg-permission'>
+            <span id='mgAreYouReady'>준비되었나요?</span>
+            <img src={charHead} id='charHead' className='mg-charset' />
+            <img src={charBody} id='charBody' className='mg-charset' />
+
+            <img src={mgGoBtn} id='mgGoBtn' onClick={onClickReady} />
+          </div>
+        }
+        <div className='mg-bg'
+          style={{
+            backgroundImage: `url(${mgBgArray[bgSelector]})`,
+            height: '100vh',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center top',
+            backgroundRepeat: 'no-repeat',
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}>
+          <div>time: {timePerRound}</div>
+          <div>round: {mgRound}</div>
+          <button onClick={onClickTimeStop}>timestop</button>
+          <div>
+            <img src={charStop}
+              style={{
+                width: `${charSize}px`,
+                position: 'relative',
+                bottom: '0',
+              }}
+              id='charStop' className='mg-char' />
+          </div>
         </div>
       </div>
     </div>

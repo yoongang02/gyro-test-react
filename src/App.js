@@ -44,7 +44,7 @@ export default function App() {
   const [charPosition, setCharPosition] = useState(0);
   const [charRate, setCharRate] = useState(6);
   const rateConstant = charRate * clientWidth / 180;
-
+  const [alpha, setAlpha] = useState(0);
   useEffect(() => {
     const timer = setInterval(() => {
       if (!mgTimeStop) {
@@ -84,7 +84,9 @@ export default function App() {
   const onClickReady = () => {
     //addEventListener
     window.addEventListener('deviceorientation', (event) => {
-      let pos = (event.alpha - 90) * rateConstant;
+      let alpha = event.alpha;
+      setAlpha(alpha);
+      let pos = (alpha - 90) * rateConstant;
       if (pos > maxPx) setCharPosition(maxPx);
       else if (pos < minPx) setCharPosition(minPx);
       else setCharPosition(pos);
@@ -121,6 +123,8 @@ export default function App() {
           }}>
           <div>time: {timePerRound}</div>
           <div>round: {mgRound}</div>
+          <div>alpha: {alpha}</div>
+          <div>position: {charPosition} </div>
           <button onClick={onClickTimeStop}>timestop</button>
           <div>
             <img src={charStop}
@@ -128,6 +132,7 @@ export default function App() {
                 width: `${charSize}px`,
                 position: 'relative',
                 bottom: '0',
+                right: `${charPosition}px`
               }}
               id='charStop' className='mg-char' />
           </div>

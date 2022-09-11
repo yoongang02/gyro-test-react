@@ -5,7 +5,7 @@ import stopImg from './img/btn-stop.png'
 import clockImg from './img/clock.png'
 import './main.css'
 
-function App() {
+function Appcopy() {
   const [gamma, setGamma] = useState(0);
   const [position, setPosition] = useState(0);
   const [charRatio, setCharRatio] = useState(10);
